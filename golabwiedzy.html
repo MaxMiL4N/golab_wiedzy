@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gołąb wiedzy</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/x-icon" href="golabwiedzy.png">
+</head>
+<body id="body">
+    <header>
+        <h1 id="title">GOŁĄB WIEDZY</h1>
+        <h3 id="subtitle">Naciśnij gołębia i dowiedz się, co sądzi gołąb wiedzy...</h3>
+    </header>
+    <main>
+        <table>
+            <td id="td" onclick="golab()"><!--<img src="golabwiedzy.png" alt="Gołąb wiedzy" title="Kliknij...">--></td>
+        </table>
+    </main>
+    <menu>
+        <label id="label_1" style="background-color: limegreen;" onclick="style_change(1)"><input type="radio" name="typ_losowania" id="tak_nie" checked> Tak/Nie</label>
+        <label id="label_2" onclick="style_change(2)"><input type="radio" name="typ_losowania" id="tak_moze_nie"> Tak/?/Nie</label>
+    </menu>
+    <p id="golab_mowi" hidden>Gołąb wiedzy mówi...</p>
+    <h1 id="wynik"></h1>
+<script>
+    function golab() {
+
+        document.getElementById("golab_mowi").hidden = false;
+
+        if (document.getElementById("tak_nie").checked == true) {
+            var los = Math.floor(Math.random() * 2);
+            if (los == 0) {
+                document.getElementById("wynik").innerHTML = "Tak!";
+                document.getElementById("body").style.backgroundImage = "linear-gradient(0deg,rgba(18, 79, 0, 1) 0%, rgba(18, 138, 0, 1) 100%)";
+                document.getElementById("body").style.transition = "0.3s";
+                document.getElementById("td").style.backgroundImage = "url(golabwiedzy_green.png)";
+            } else {
+                document.getElementById("wynik").innerHTML = "Nie!";
+                document.getElementById("body").style.backgroundImage = "linear-gradient(0deg,rgba(79, 0, 0, 1) 0%, rgba(138, 0, 0, 1) 100%)";
+                document.getElementById("body").style.transition = "0.3s";
+                document.getElementById("td").style.backgroundImage = "url(golabwiedzy_red.png)";
+            }
+        }
+
+        else if (document.getElementById("tak_moze_nie").checked == true) {
+            var los = Math.floor(Math.random() * 3);
+            if (los == 0) {
+                document.getElementById("wynik").innerHTML = "Tak!";
+                document.getElementById("body").style.backgroundImage = "linear-gradient(0deg,rgba(18, 79, 0, 1) 0%, rgba(18, 138, 0, 1) 100%)";
+                document.getElementById("body").style.transition = "0.3s";
+                document.getElementById("td").style.backgroundImage = "url(golabwiedzy_green.png)";
+            } else if (los == 1) {
+                document.getElementById("wynik").innerHTML = "Zdecyduj samodzielnie!";
+                document.getElementById("body").style.backgroundImage = "linear-gradient(0deg,rgba(79, 79, 0, 1) 0%, rgba(138, 138, 0, 1) 100%)";
+                document.getElementById("body").style.transition = "0.3s";
+                document.getElementById("td").style.backgroundImage = "url(golabwiedzy_yellow.png)";
+            } else {
+                document.getElementById("wynik").innerHTML = "Nie!";
+                document.getElementById("body").style.backgroundImage = "linear-gradient(0deg,rgba(79, 0, 0, 1) 0%, rgba(138, 0, 0, 1) 100%)";
+                document.getElementById("body").style.transition = "0.3s";
+                document.getElementById("td").style.backgroundImage = "url(golabwiedzy_red.png)";
+            }
+        }
+
+    }
+
+    function style_change(x) {
+for (let i = 1; i <= 2; i++) { // Update this range if you add more labels
+        let label = document.getElementById("label_" + i);
+        if (label) {
+            if (i === x) {
+                label.style.backgroundColor = "limegreen";
+            } else {
+                label.style.backgroundColor = "gray";
+            }
+        }
+    }
+
+    }
+</script>
+</body>
+</html>
